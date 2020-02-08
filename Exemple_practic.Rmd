@@ -1,0 +1,92 @@
+---
+title: "Exemples"
+author: "Miriam Mota-Foix"
+date: "1/14/2020"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = F)
+```
+
+## Instruccions
+
+
+Tenim 13 daus:
+
+- 6 verds amb:
+    * 3 cervells
+    * 2 passos
+    * 1 BANG!
+
+- 4 grocs amb:
+   * 2 cervells
+   * 2 passos
+   * 2 BANG!
+
+- 3 vermells amb:
+  * 1 cervells
+  * 2 passos
+  * 3 BANG!
+  
+  
+  
+
+# Funcionament  
+  
+
+-   Primera tirada: 
+    - Disposem de tots els daus
+    - No hi ha cap dau a sobre la taula
+    - No hi ha passos que calgui tirar 
+    - Tirem 3 daus
+
+
+- Tirades posteriors: 
+    - Tenim els daus de la tirada anterior
+    - Hi ha daus a sobre la taula 
+    - Es posible que hi hagi passos per tirar
+    - Tirem 3 daus
+
+
+
+- Accions que podem realitzar: 
+    - Tirar 3 daus
+    - Mirar quins daus queden dins del cubilet (per defecte)
+    - Plantar-nos 
+
+
+
+
+<!-- # ## Tirada quan no hi ha mes daus al cubilet: -->
+<!-- # - Hi ha daus a sobre la taula.  -->
+<!-- # - Guardem tots el daus? o nomes passos? -->
+
+## Exemple de joc
+
+
+```{r}
+
+source("rcode_zombies.R")
+require("crayon")
+
+
+set.seed(1)
+tots <- c(rep("verd",6),rep("groc",4),rep("vermell",3)) 
+
+
+TAULA <- NULL
+(t1 <- jugar(daus = tots))
+(t2 <- jugar(daus = t1$daus_restants, daus_obligatoris = t1$passos))
+(t3 <- jugar(daus = t2$daus_restants, daus_obligatoris = t2$passos))
+
+# (t4 <- jugar(daus = t3$daus_restants, daus_obligatoris = t3$passos))
+# dau_paint(t4$resultat)
+# dau_paint(TAULA)
+```
+
+
+  
+  
